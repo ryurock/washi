@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+body {
+  min-width: 1020px;
+  font-family:-apple-system, BlinkMacSystemFont, "Roboto Slab", "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+  font-size: inherit;
+  line-height: 1.5;
+  color: #24292e;
+  margin: 0;
+}
+
+/** Layout https://github.com/rstacruz/rscss/blob/master/docs/layouts.md */
+.header-section {
+    background-color: #24292e;
+    color: rgba(255,255,255,0.75);
+    display: flex;
+}
+
+.header-section > .header-title {
+}
+
+.header-title {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 7px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.header-title > .orgazanation {
+    text-decoration: none;
+    padding-right: 3px;
+    color: #0366d6;
+
+}
+
+.header-title > .title {
+    text-decoration: none;
+    padding-left: 3px;
+    color: #0366d6;
+}

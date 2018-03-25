@@ -1,0 +1,91 @@
+@import "assets/stylesheets/scss/theme.scss";
+
+body {
+  font-family:-apple-system, BlinkMacSystemFont, "Roboto Slab", "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+}
+
+.table-list-filters {
+    margin: auto;
+    background: black;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 0px;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+.list-group-item-task {
+  font-size: $lead-font-size;
+  border-bottom: solid 1px orange;
+  &:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  &:last-child {
+    border: 0px;
+  }
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: theme-color("secondary");
+    opacity: 1; /* Firefox */
+  }
+}
+
+.list-group-item-collapse {
+  font-size: $lead-font-size;
+}
+
+.list-group-item-task-form-text {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.badge {
+  &-todo {
+    padding: 0.5rem 0.60rem;
+    margin-right: 0.75rem;
+    font-style: italic;
+    background: rgba(map-get($theme-colors, 'primary'), 0.75);
+    color: theme-color('light');
+  }
+
+  &-doing {
+    padding: 0.5rem 0.5rem;
+    margin-right: 0.75rem;
+    font-style: italic;
+    background: rgba(map-get($theme-colors, 'warning'), 0.75);
+    color: theme-color('light');
+  }
+
+  &-done {
+    padding: 0.5rem 0.50rem;
+    margin-right: 0.75rem;
+    font-style: italic;
+    background: rgba(map-get($theme-colors, 'success'), 0.75);
+    color: theme-color('light');
+  }
+
+  &-high {
+    padding: 0.25rem 1rem;
+    margin-right: 0.75rem;
+    font-style: italic;
+    background: rgba(map-get($theme-colors, 'danger'), 0.75);
+    color: theme-color('light');
+  }
+
+  &-medium {
+    padding: 0.25rem;
+    margin-right: 0.75rem;
+    font-style: italic;
+    background: rgba(map-get($theme-colors, 'success'), 0.75);
+    color: theme-color('light');
+  }
+
+  &-low {
+    padding: 0.25rem 1.15rem;
+    margin-right: 0.75rem;
+    font-style: italic;
+    background: rgba(map-get($theme-colors, 'info'), 0.75);
+    color: theme-color('light');
+  }
+}

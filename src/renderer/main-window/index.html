@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+  <title>Shizoo</title>
+  <meta name="author" content="ryurock">
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="../../../node_modules/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../../../assets/stylesheets/css/application.css" type="text/css"> </head>
+
+<body class="">
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#"><b>ユーザー名 / project name</b></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarPrimarySupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbarPrimarySupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#"> Nav item</a>
+          </li>
+        </ul>
+        <a class="btn navbar-btn ml-2 btn-secondary" href="#"> Button</a>
+      </div>
+    </div>
+  </nav>
+  <div class="py-1">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="input-group input-group-lg w-100">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">メニュー1</a>
+                ...
+                <div role="separator" class="dropdown-divider"></div>
+                ...
+              </div><!-- /.dropdown-menu -->
+            </div><!-- /.input-group-prepend -->
+            <input type="text" class="form-control" >
+          </div><!-- /.input-group -->
+        </div>
+
+
+        <div class="col-md-4 text-center">
+          <div class="btn-group btn-group-md mt-1">
+            <a class="btn btn-info" data-toggle="collapse" href="#task-collapse" role="button" aria-expanded="false" aria-controls="task-collapse">Insight</a>
+            <a href="#" class="btn btn-info">Btn 2</a>
+            <a href="#" class="btn btn-info">Btn 3</a>
+          </div>
+        </div>
+        <div class="col-md-2 text-right">
+          <a class="btn btn-primary btn-lg" href="#">Button </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-2">
+    <div class="container">
+      <div class="row table-list-filters">
+        <div class="col-md-9">
+          <div class="btn-group btn-group-md">
+            <div class="dropdown">
+              <a class="btn dropdown-toggle text-success" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="badge badge-pill badge-light mr-1">120</span>
+                <span class="text-success font-italic">Cost</span>
+              </a>
+              <!-- ドロップメニューの設定 -->
+              <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item text-success" href="#">
+                  <span class="badge badge-pill badge-light mr-1">3</span>
+                  <span class="text-success font-italic">High</span>
+                </a>
+                <a class="dropdown-item text-success" href="#">
+                  <span class="badge badge-pill badge-light mr-1">3</span>
+                  <span class="text-success font-italic">Medium</span>
+                </a>
+                <a class="dropdown-item text-success" href="#">
+                  <span class="badge badge-pill badge-light mr-1">3</span>
+                  <span class="text-success font-italic">Low</span>
+                </a>
+                <a class="dropdown-item text-success" href="#">
+                  <span class="badge badge-pill badge-light mr-1">3</span>
+                  <span class="text-success font-italic">Fast</span>
+                </a>
+              </div><!-- /.dropdown-menu -->
+            </div>
+
+            <a class="btn" href="#">
+              <span class="badge badge-pill badge-light">9</span>
+              Todo
+            </a>
+            <a class="btn" href="#">
+              <span class="badge badge-pill badge-light">2</span>
+              Doing
+            </a>
+            <a class="btn" href="#">
+              <span class="badge badge-pill badge-light">120</span>
+              Done
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="btn-group btn-group-md">
+            <div class="dropdown">
+              <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Labels
+              </a>
+              <!-- ドロップメニューの設定 -->
+              <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item text-success" href="#">Todo</a>
+                <a class="dropdown-item text-success" href="#">Doing</a>
+                <a class="dropdown-item text-success" href="#">Done</a>
+                <a class="dropdown-item text-success" href="#">Inject</a>
+              </div><!-- /.dropdown-menu -->
+            </div>
+
+            <div class="dropdown">
+              <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                assignee
+              </a>
+              <!-- ドロップメニューの設定 -->
+              <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item text-success" href="#">User1</a>
+                <a class="dropdown-item text-success" href="#">User2</a>
+                <a class="dropdown-item text-success" href="#">User3</a>
+              </div><!-- /.dropdown-menu -->
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-row collapse" id="task-collapse">
+        <div class="col-md-12">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-collapse d-flex justify-content-between align-items-center bg-dark">
+              <img src="https://avatars2.githubusercontent.com/u/3800839?s=88&v=4" class="img-thumbnail mr-2" alt="Cinque Terre" width="40">
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-primary text-white border-0">Cost</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="12(+3)">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-info text-white border-0">Tasks</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-primary text-white border-0">Todo</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-warning text-white border-0">Doing</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-success text-white border-0">Done</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-danger text-white border-0">Inject</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+            </li>
+
+            <li class="list-group-item list-group-item-collapse d-flex justify-content-between align-items-center bg-dark">
+              <img src="https://avatars2.githubusercontent.com/u/3800839?s=88&v=4" class="img-thumbnail mr-2" alt="Cinque Terre" width="40">
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-primary text-white border-0">Cost</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="12(+3)">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-info text-white border-0">Tasks</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-primary text-white border-0">Todo</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-warning text-white border-0">Doing</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-success text-white border-0">Done</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-danger text-white border-0">Inject</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+            </li>
+
+            <li class="list-group-item list-group-item-collapse d-flex justify-content-between align-items-center bg-dark">
+              <img src="https://avatars2.githubusercontent.com/u/3800839?s=88&v=4" class="img-thumbnail mr-2" alt="Cinque Terre" width="40">
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-primary text-white border-0">Cost</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="12(+3)">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-info text-white border-0">Tasks</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-primary text-white border-0">Todo</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-warning text-white border-0">Doing</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-success text-white border-0">Done</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+
+              <div class="input-group col-md-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bg-danger text-white border-0">Inject</div>
+                </div>
+                <input type="text" class="form-control list-group-item-task-collapse-form-text bg-dark border-0 " value="6">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="card mb-2 bg-dark">
+              <div class="card-header d-flex flex-row" role="tab" id="headingTwo">
+                <h5 class="m-auto">
+                  <a class="collapsed text-dark" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="badge badge-todo">Todo</span>
+                  </a>
+                </h5>
+                <textarea class="form-control form-control-lg col-md-7 list-group-item-task-form-text bg-dark text-success mr-2" placeholder="Please enter a task name"></textarea>
+                <div class="m-auto">
+                  <img src="https://avatars2.githubusercontent.com/u/3800839?s=88&v=4" class="img-thumbnail ml-1 mr-1" alt="Cinque Terre" width="40">
+                </div>
+                <div class="input-group col-md-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-dark text-white border-0 font-italic">Cost</div>
+                  </div>
+                  <input type="text" class="form-control form-control-lg list-group-item-task-collapse-form-text bg-dark text-success border-0 " value="2(0)">
+                </div>
+                <h5 class="m-auto"><span class="badge badge-high">high</span></h5>
+                <div class="btn-group btn-group-md m-auto">
+                  <div class="dropdown">
+                    <a class="btn dropdown-toggle text-success" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="text-success font-italic">Push</span>
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item text-success" href="#">
+                        <span class="text-success font-italic">Issue</span>
+                      </a>
+                      <a class="dropdown-item text-success" href="#">
+                        <span class="text-success font-italic">PullReq</span>
+                      </a>
+                    </div><!-- /.dropdown-menu -->
+                  </div>
+                </div>
+
+              </div><!-- /.card-header -->
+              <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <textarea rows="10" class="form-control form-control-lg col-md-12 list-group-item-task-form-text bg-dark text-success mb-2" placeholder="Task Readme"></textarea>
+                </div><!-- /.card-body -->
+              </div><!-- /.collapse -->
+            </div><!-- /.card -->
+
+
+            <div class="card mb-2 bg-dark">
+              <div class="card-header d-flex flex-row" role="tab" id="headingThree">
+                <h5 class="m-auto">
+                  <a class="collapsed text-dark" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
+                    <span class="badge badge-done">Done</span>
+                  </a>
+                </h5>
+                <textarea class="form-control form-control-lg col-md-7 list-group-item-task-form-text bg-dark text-success mr-2" placeholder="Please enter a task name"></textarea>
+                <div class="m-auto">
+                  <img src="https://avatars2.githubusercontent.com/u/3800839?s=88&v=4" class="img-thumbnail ml-1 mr-1" alt="Cinque Terre" width="40">
+                </div>
+                <div class="input-group col-md-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-dark text-white border-0 font-italic">Cost</div>
+                  </div>
+                  <input type="text" class="form-control form-control-lg list-group-item-task-collapse-form-text bg-dark text-success border-0 " value="2(0)">
+                </div>
+                <h5 class="m-auto"><span class="badge badge-medium">medium</span></h5>
+                <div class="btn-group btn-group-md m-auto">
+                  <div class="dropdown">
+                    <a class="btn dropdown-toggle text-success" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="text-success font-italic">Push</span>
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item text-success" href="#">
+                        <span class="text-success font-italic">Issue</span>
+                      </a>
+                      <a class="dropdown-item text-success" href="#">
+                        <span class="text-success font-italic">PullReq</span>
+                      </a>
+                    </div><!-- /.dropdown-menu -->
+                  </div>
+                </div>
+              </div><!-- /.card-header -->
+              <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  <textarea rows="10" class="form-control form-control-lg col-md-12 list-group-item-task-form-text bg-dark text-success mb-2" placeholder="Task Readme"></textarea>
+                </div><!-- /.card-body -->
+              </div><!-- /.collapse -->
+            </div><!-- /.card -->
+
+
+            <div class="card mb-2 bg-dark">
+              <div class="card-header d-flex flex-row" role="tab" id="headingThree">
+                <h5 class="m-auto">
+                  <a class="collapsed text-dark" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
+                    <span class="badge badge-doing">Doing</span>
+                  </a>
+                </h5>
+                <textarea class="form-control form-control-lg col-md-7 list-group-item-task-form-text bg-dark text-success mr-2" placeholder="Please enter a task name"></textarea>
+                <div class="m-auto">
+                  <img src="https://avatars2.githubusercontent.com/u/3800839?s=88&v=4" class="img-thumbnail ml-1 mr-1" alt="Cinque Terre" width="40">
+                </div>
+                <div class="input-group col-md-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-dark text-white border-0 font-italic">Cost</div>
+                  </div>
+                  <input type="text" class="form-control form-control-lg list-group-item-task-collapse-form-text bg-dark text-success border-0 " value="2(0)">
+                </div>
+                <h5 class="m-auto"><span class="badge badge-low">low</span></h5>
+                <div class="btn-group btn-group-md m-auto">
+                  <div class="dropdown">
+                    <a class="btn dropdown-toggle text-success" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="text-success font-italic">Push</span>
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item text-success" href="#">
+                        <span class="text-success font-italic">Issue</span>
+                      </a>
+                      <a class="dropdown-item text-success" href="#">
+                        <span class="text-success font-italic">PullReq</span>
+                      </a>
+                    </div><!-- /.dropdown-menu -->
+                  </div>
+                </div>
+              </div><!-- /.card-header -->
+              <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  <textarea rows="10" class="form-control form-control-lg col-md-12 list-group-item-task-form-text bg-dark text-success mb-2" placeholder="Task Readme"></textarea>
+                </div><!-- /.card-body -->
+              </div><!-- /.collapse -->
+            </div><!-- /.card -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    require('./index.js');
+  </script>
+  </body>
+</html>

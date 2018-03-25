@@ -1,0 +1,26 @@
+{
+  "name": "electron-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main-process/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:sass": "node-sass --output-style expanded --source-map true --source-map-contents true assets/stylesheets/scss/application.scss assets/stylesheets/css/application.css",
+    "watch:sass": "node-sass --output-style expanded --source-map true --source-map-contents true assets/stylesheets/scss/application.scss assets/stylesheets/css/application.css --watch --recursive",
+    "minify:js": "./node_modules/.bin/uglifyjs assets/javascripts/app.js --output assets/javascripts/app.min.js",
+    "watch": "npm run watch:sass"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "electron": "^1.8.4",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "nedb": "^1.8.0",
+    "node-sass": "^4.8.3",
+    "popper.js": "^1.14.1",
+    "uglify-es": "^3.3.9",
+    "watch": "^1.0.2"
+  }
+}
