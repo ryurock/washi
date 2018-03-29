@@ -10,10 +10,21 @@ class MainRenderer{
     }
 
     async main() {
-      const token = await this.authorization();
+      await this.authorization();
+      await this.repositoryInit();
     }
+
+    repositoryInit() {
+      return new Promise((resolve, reject) =>{
+        ipcRenderer.send('asynchronous-message', 'repository-init');
+        ipcRenderer.on('asynchronous-reply', (event, arg) =>{
+          console.log('repository-init');
+        });
+      });
+    }
+
     authorization() {
-      return new Promise((resole, reject) => {
+      return new Promise((resolve, reject) => {
         ipcRenderer.send('asynchronous-message', 'auth');
         ipcRenderer.on('asynchronous-reply', (event, arg) => {
           resolve(arg);

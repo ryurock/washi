@@ -19,3 +19,19 @@ npm start
 ```
 npm run watch
 ```
+
+## config/secret.json foramt
+
+```
+{
+  "oauth": {
+    "github": {
+      "id": "your app key",
+      "secret": "your app secret"
+    }
+  },
+  "github": {
+    "orgazanation": { "name": "orgazanation name", "type": "public or private"}
+  }
+}
+```
