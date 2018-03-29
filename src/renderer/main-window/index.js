@@ -5,18 +5,18 @@ require('../../../node_modules/popper.js/dist/umd/popper.min.js');
 const {ipcRenderer} = require('electron')
 class MainRenderer{
     constructor() {
+      this.githubToken = {};
 
     }
 
     async main() {
-      await this.authorization();
+      const token = await this.authorization();
     }
     authorization() {
       return new Promise((resole, reject) => {
         ipcRenderer.send('asynchronous-message', 'auth');
         ipcRenderer.on('asynchronous-reply', (event, arg) => {
-          console.log(arg);
-
+          resolve(arg);
         })
       });
     }
