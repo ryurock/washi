@@ -30,7 +30,6 @@ class ServicesGithubOAuth extends EventEmitter{
     async authorizedToken() {
         return new Promise((resolve, reject) => {
             const fetchAccessToken = async (url) => {
-                console.log(url);
                 const tokenState = await this.client.getToken(url);
                 resolve(tokenState.token);
             };
