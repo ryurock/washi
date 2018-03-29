@@ -1,17 +1,41 @@
-const EventEmitter = require('events').EventEmitter;
 const ApiClient = require('./api/client');
+const SecretGtihub  = require('../../../../config/secret.json').github;
 
-
-class ServicesGithubApi extends EventEmitter{
+class ServicesGithubApi {
     constructor(token, mainWindow) {
-        super();
-        this.client = new ApiClient(token);
+        this.client = new ApiClient(token).client;
         this.mainWindow = mainWindow;
     }
 
-    async getRepos() {
-        const repos = await this.client.getRepos();
-        console.log(repos);
+    responseFilter(data, fields = []) {
+        if (fields.length > 0) {
+            return data.map((v) => {
+                let row = {};
+                for (let key in v) {
+                    if (fields.indexOf(key) !== -1) row[key] = v[key];
+                }
+                return row;
+            });
+        } else {
+            return data;
+        }
+    }
+
+    async fetchRepos(fields = []) {
+        return new Promise(async (resolve, reject) =>{
+            let responses = await this.client.repos.getForOrg({
+                org: SecretGtihub.orgazanation.name,
+                type: SecretGtihub.orgazanation.type,
+                per_page: 100
+            });
+
+            let { data } = responses;
+            while(this.client.hasNextPage(responses)) {
+                responses = await this.client.getNextPage(responses);
+                data = data.concat(responses.data);
+            }
+            resolve(this.responseFilter(data, fields));
+        });
     }
 }
 module.exports = ServicesGithubApi;

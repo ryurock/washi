@@ -7,6 +7,9 @@ class DataStoreAdapter {
         return {
             auth: {
                 github: new NeDb({filename: Path.join(electron.app.getPath('home'), '.washi/db/auth/github.db'), autoload: true })
+            },
+            user: {
+                repos: new NeDb({filename: Path.join(electron.app.getPath('home'), '.washi/db/user/github/repos.db'), autoload: true })
             }
         };
     }

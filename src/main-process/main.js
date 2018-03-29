@@ -5,6 +5,7 @@ const BrowserWindow = electron.BrowserWindow;
 const app = electron.app;
 const ServicesGithubOAuth = require('./services/github/oauth');
 const ServicesGithubApi   = require('./services/github/api');
+const DataStoreUsers      = require('./data-store/users');
 
 process.on('unhandledRejection', console.dir);
 
@@ -32,7 +33,7 @@ class MyApplication {
         this.mainWindow.webContents.openDevTools();
         this.mainWindow.loadURL('file://' + __dirname + '/../renderer/main-window/index.html');
 
-        ipcMain.on('asynchronous-message', (event, arg) => {
+        ipcMain.on('asynchronous-message', async (event, arg) => {
             if (arg == 'auth') {
                 this.githubApi = null;
                 const auth = new ServicesGithubOAuth(this.mainWindow);
@@ -48,7 +49,13 @@ class MyApplication {
             }
 
             if (arg == 'repository-init') {
-                this.githubApi.getRepos();
+                const user = new DataStoreUsers();
+                let repos = await user.fetchRepos();
+                if (repos.length == 0) {
+                    const repos = await this.githubApi.fetchRepos(['id', 'name', 'full_name']);
+                    console.log(repos);
+                    this.mainWindow.loadURL(`file://${__dirname}/../renderer/main-window/orgazanation.html`);
+                }
             }
         });
         this.mainWindow.on('closed', () => {
