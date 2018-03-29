@@ -3,6 +3,8 @@ const electron = require('electron');
 const ipcMain = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
 const app = electron.app;
+const ServicesGithubOAuth = require('./services/github/oauth');
+process.on('unhandledRejection', console.dir);
 
 class MyApplication {
     constructor(app) {
@@ -24,10 +26,21 @@ class MyApplication {
             minHeight: 200,
             acceptFirstMouse: true
         });
-        this.mainWindow.loadURL('file://' + __dirname + '/../renderer/main-window/index.html');
         this.mainWindow.webContents.openDevTools();
+        this.mainWindow.loadURL('file://' + __dirname + '/../renderer/main-window/index.html');
+
         ipcMain.on('asynchronous-message', (event, arg) => {
-          event.sender.send('asynchronous-reply', 'pong');
+            if (arg == 'auth') {
+                const auth = new ServicesGithubOAuth(this.mainWindow);
+                auth.authorization();
+                auth.on('unauthorized', () => {
+                    console.log('unauthorized');
+                    this.onWindowAllClosed();
+                });
+                auth.on('authorized', (token) =>{
+                    event.sender.send('asynchronous-reply', token);
+                });
+            }
         });
         this.mainWindow.on('closed', () => {
             this.mainWindow = null;
