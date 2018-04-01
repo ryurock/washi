@@ -2,7 +2,9 @@ window.jQuery = window.$ = require('jquery');
 require('../../../node_modules/bootstrap/dist/js/bootstrap.min.js');
 require('../../../node_modules/popper.js/dist/umd/popper.min.js');
 
-const {ipcRenderer} = require('electron')
+const {ipcRenderer} = require('electron');
+const DataStoreUsers = require('../../main-process/data-store/users');
+
 class MainRenderer{
     constructor() {
       this.githubToken = {};
@@ -11,14 +13,18 @@ class MainRenderer{
 
     async main() {
       await this.authorization();
-      await this.repositoryInit();
+      await this.selectedRepos();
     }
 
-    repositoryInit() {
-      return new Promise((resolve, reject) =>{
-        ipcRenderer.send('asynchronous-message', 'repository-init');
-        ipcRenderer.on('asynchronous-reply', (event, arg) =>{
-          console.log('repository-init');
+    selectedRepos() {
+      return new Promise((resolve, reject) => {
+
+        ipcRenderer.send('asynchronous-message', 'selected-repos');
+        ipcRenderer.on('asynchronous-reply', (event, repos) =>{
+          console.log('selected-repos');
+          if (repos.length == 0 ) {
+            ipcRenderer.send('asynchronous-message', 'move-orgazanation-list');
+          }
         });
       });
     }

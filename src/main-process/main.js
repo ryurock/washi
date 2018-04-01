@@ -48,14 +48,18 @@ class MyApplication {
                 });
             }
 
-            if (arg == 'repository-init') {
+            if (arg == 'selected-repos') {
                 const user = new DataStoreUsers();
                 let repos = await user.fetchRepos();
-                if (repos.length == 0) {
-                    const repos = await this.githubApi.fetchRepos(['id', 'name', 'full_name']);
-                    console.log(repos);
-                    this.mainWindow.loadURL(`file://${__dirname}/../renderer/main-window/orgazanation.html`);
-                }
+                event.sender.send('asynchronous-reply', repos);
+            }
+
+            if (arg == 'move-orgazanation-list') {
+                this.mainWindow.loadURL(`file://${__dirname}/../renderer/main-window/orgazanation.html`);
+            }
+
+            if (arg == 'fetch-orgazanation-list') {
+                event.sender.send('asynchronous-reply', await this.githubApi.fetchRepos(['id', 'name', 'full_name']));
             }
         });
         this.mainWindow.on('closed', () => {
