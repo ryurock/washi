@@ -37,5 +37,13 @@ class ServicesGithubApi {
             resolve(this.responseFilter(data, fields));
         });
     }
+
+    async fetchUser(fields = []) {
+        return new Promise(async (resolve, reject) =>{
+            resolve(this.responseFilter(this.client.users.get({}), fields));
+
+        });
+
+    }
 }
 module.exports = ServicesGithubApi;

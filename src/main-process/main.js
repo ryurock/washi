@@ -44,14 +44,19 @@ class MyApplication {
                 });
                 auth.on('authorized', (token) => {
                     this.githubApi = new ServicesGithubApi(token, this.mainWindow);
-                    event.sender.send('asynchronous-reply', token);
+                    event.sender.send('asynchronous-reply', {event_type: 'auth', data: token});
                 });
+            }
+
+            if (type == 'whoami') {
+                const user = await this.githubApi.fetchUser();
+                event.sender.send('asynchronous-reply', { event_type: 'whoami', data: user.data});
             }
 
             if (type == 'selected-repos') {
                 const user = new DataStoreUsers();
                 let repos = await user.fetchRepos();
-                event.sender.send('asynchronous-reply', repos);
+                event.sender.send('asynchronous-reply', {event_type: 'selected-repos', data: repos});
             }
 
             if (type == 'move-repos-renderer') {

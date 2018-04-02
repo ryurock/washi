@@ -5,36 +5,32 @@ require('../../../node_modules/popper.js/dist/umd/popper.min.js');
 const {ipcRenderer} = require('electron');
 
 class MainRenderer{
-    constructor() {
-      this.githubToken = {};
+  constructor() {
+    this.githubToken = {};
 
-    }
+  }
 
-    async main() {
-      await this.authorization();
-      await this.selectedRepos();
-    }
-
-    selectedRepos() {
-      return new Promise((resolve, reject) => {
-
+  async main() {
+    ipcRenderer.send('asynchronous-message', 'auth');
+    ipcRenderer.on('asynchronous-reply', (event, arg) => {
+      if (arg.event_type == 'auth') {
         ipcRenderer.send('asynchronous-message', 'selected-repos');
-        ipcRenderer.on('asynchronous-reply', (event, repos) =>{
-          if (repos.length == 0 ) {
-            ipcRenderer.send('asynchronous-message', 'move-repos-renderer');
-          }
-        });
-      });
-    }
+        ipcRenderer.send('asynchronous-message', 'whoami');
+      }
 
-    authorization() {
-      return new Promise((resolve, reject) => {
-        ipcRenderer.send('asynchronous-message', 'auth');
-        ipcRenderer.on('asynchronous-reply', (event, arg) => {
-          resolve(arg);
-        })
-      });
-    }
+      if (arg.event_type == 'whoami') {
+        document.querySelector('.js-avatar').setAttribute('src', arg.data.avatar_url);
+      }
+
+      if (arg.event_type == 'selected-repos') {
+        if (arg.data.length == 0 ) {
+          ipcRenderer.send('asynchronous-message', 'move-repos-renderer');
+        } else {
+          console.log(arg);
+        }
+      }
+    })
+  }
 }
 module.exports = MainRenderer;
 
