@@ -13,5 +13,10 @@ class DataStoreUser {
         });
     }
 
+    async deleteInsertRepos(repos = []) {
+        this.db.repos.remove({}, { multi: true });
+        this.db.repos.insert(repos);
+    }
+
 }
 module.exports = DataStoreUser;

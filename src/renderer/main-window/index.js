@@ -3,7 +3,6 @@ require('../../../node_modules/bootstrap/dist/js/bootstrap.min.js');
 require('../../../node_modules/popper.js/dist/umd/popper.min.js');
 
 const {ipcRenderer} = require('electron');
-const DataStoreUsers = require('../../main-process/data-store/users');
 
 class MainRenderer{
     constructor() {
@@ -21,9 +20,8 @@ class MainRenderer{
 
         ipcRenderer.send('asynchronous-message', 'selected-repos');
         ipcRenderer.on('asynchronous-reply', (event, repos) =>{
-          console.log('selected-repos');
           if (repos.length == 0 ) {
-            ipcRenderer.send('asynchronous-message', 'move-orgazanation-list');
+            ipcRenderer.send('asynchronous-message', 'move-repos-renderer');
           }
         });
       });

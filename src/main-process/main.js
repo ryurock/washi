@@ -33,8 +33,8 @@ class MyApplication {
         this.mainWindow.webContents.openDevTools();
         this.mainWindow.loadURL('file://' + __dirname + '/../renderer/main-window/index.html');
 
-        ipcMain.on('asynchronous-message', async (event, arg) => {
-            if (arg == 'auth') {
+        ipcMain.on('asynchronous-message', async (event, type, data) => {
+            if (type == 'auth') {
                 this.githubApi = null;
                 const auth = new ServicesGithubOAuth(this.mainWindow);
                 auth.authorization();
@@ -48,18 +48,30 @@ class MyApplication {
                 });
             }
 
-            if (arg == 'selected-repos') {
+            if (type == 'selected-repos') {
                 const user = new DataStoreUsers();
                 let repos = await user.fetchRepos();
                 event.sender.send('asynchronous-reply', repos);
             }
 
-            if (arg == 'move-orgazanation-list') {
-                this.mainWindow.loadURL(`file://${__dirname}/../renderer/main-window/orgazanation.html`);
+            if (type == 'move-repos-renderer') {
+                this.mainWindow.loadURL(`file://${__dirname}/../renderer/main-window/repos.html`);
             }
 
-            if (arg == 'fetch-orgazanation-list') {
-                event.sender.send('asynchronous-reply', await this.githubApi.fetchRepos(['id', 'name', 'full_name']));
+            if (type == 'move-main-renderer') {
+                this.mainWindow.loadURL(`file://${__dirname}/../renderer/main-window/index.html`);
+            }
+
+            if (type == 'fetch-repo-list') {
+                const repos = await this.githubApi.fetchRepos(['id', 'name', 'full_name']);
+                event.sender.send('asynchronous-reply', {event_type: 'fetch-repo-list', data: repos});
+            }
+
+            if (type == 'save-repos') {
+                const user = new DataStoreUsers();
+                user.deleteInsertRepos(data);
+                const repos = await user.fetchRepos();
+                event.sender.send('asynchronous-reply', { event_type: 'save-repos', data: repos});
             }
         });
         this.mainWindow.on('closed', () => {
