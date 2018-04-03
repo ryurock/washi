@@ -14,12 +14,19 @@ class MainRenderer{
     ipcRenderer.send('asynchronous-message', 'auth');
     ipcRenderer.on('asynchronous-reply', (event, arg) => {
       if (arg.event_type == 'auth') {
+        ipcRenderer.send('asynchronous-message', 'fetch-members');
         ipcRenderer.send('asynchronous-message', 'selected-repos');
         ipcRenderer.send('asynchronous-message', 'whoami');
       }
 
       if (arg.event_type == 'whoami') {
         document.querySelector('.js-avatar').setAttribute('src', arg.data.avatar_url);
+      }
+
+      if (arg.event_type == 'fetch-members') {
+        if (arg.data.length == 0) {
+          ipcRenderer.send('asynchronous-message', 'move-members-renderer');
+        }
       }
 
       if (arg.event_type == 'selected-repos') {

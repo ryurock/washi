@@ -32,6 +32,7 @@ class MyApplication {
         });
         this.mainWindow.webContents.openDevTools();
         this.mainWindow.loadURL('file://' + __dirname + '/../renderer/main-window/index.html');
+        const user = new DataStoreUsers();
 
         ipcMain.on('asynchronous-message', async (event, type, data) => {
             if (type == 'auth') {
@@ -53,8 +54,21 @@ class MyApplication {
                 event.sender.send('asynchronous-reply', { event_type: 'whoami', data: user.data});
             }
 
+            if (type == 'fetch-members') {
+                const members = await user.fetchMembers();
+                event.sender.send('asynchronous-reply', { event_type: 'fetch-members', data: members});
+            }
+
+            if (type == 'move-members-renderer') {
+                this.mainWindow.loadURL(`file://${__dirname}/../renderer/main-window/members.html`);
+            }
+
+            if (type == 'fetch-members-direct') {
+                const members = await this.githubApi.fetchMembers();
+                event.sender.send('asynchronous-reply', {event_type: 'fetch-members-direct', data: members});
+            }
+
             if (type == 'selected-repos') {
-                const user = new DataStoreUsers();
                 let repos = await user.fetchRepos();
                 event.sender.send('asynchronous-reply', {event_type: 'selected-repos', data: repos});
             }
@@ -73,7 +87,6 @@ class MyApplication {
             }
 
             if (type == 'save-repos') {
-                const user = new DataStoreUsers();
                 user.deleteInsertRepos(data);
                 const repos = await user.fetchRepos();
                 event.sender.send('asynchronous-reply', { event_type: 'save-repos', data: repos});

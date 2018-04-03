@@ -1,6 +1,6 @@
 const DbAdapter = require('./adapter');
 
-class DataStoreUser {
+class DataStoreUsers {
     constructor () {
         this.db = DbAdapter.neDb().user;
     }
@@ -13,10 +13,18 @@ class DataStoreUser {
         });
     }
 
+    async fetchMembers() {
+        return new Promise((resolve, reject) => {
+            this.db.members.find({}, (err, responses) => {
+                resolve(responses);
+            });
+        });
+    }
+
     async deleteInsertRepos(repos = []) {
         this.db.repos.remove({}, { multi: true });
         this.db.repos.insert(repos);
     }
 
 }
-module.exports = DataStoreUser;
+module.exports = DataStoreUsers;
